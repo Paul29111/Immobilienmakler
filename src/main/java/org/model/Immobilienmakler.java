@@ -25,6 +25,13 @@ public class Immobilienmakler
         this.name = stringEnsurer(name, "name");
     }
 
+    //-------------------- GETTER ----------------------
+
+    public String getName()
+    {
+        return name;
+    }
+
     //------------------ Methoden --------------------
     public void  add(Immobilie immo) throws ImmobilienmaklerException
     {

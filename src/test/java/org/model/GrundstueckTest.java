@@ -40,8 +40,6 @@ class GrundstueckTest
             //THEN
             assertEquals("Ungueltige Flaeche", e.getMessage());
         }
-
-
     }
 
 
