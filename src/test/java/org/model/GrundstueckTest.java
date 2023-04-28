@@ -35,6 +35,9 @@ class GrundstueckTest
         {
             //WHEN
             grund.setFlaeche(flaeche);
+
+            fail();
+
         } catch (ImmobilienmaklerException e)
         {
             //THEN

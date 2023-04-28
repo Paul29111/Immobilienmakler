@@ -4,8 +4,8 @@ package org.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static org.model.Ensurer.ensurerState;
-import static org.model.Ensurer.stringEnsurer;
+import static java.lang.Character.toUpperCase;
+import static org.model.Ensurer.*;
 
 public class Immobilienmakler
 {
@@ -35,9 +35,15 @@ public class Immobilienmakler
     //------------------ Methoden --------------------
     public void  add(Immobilie immo) throws ImmobilienmaklerException
     {
+        ensurerNotNull(immo, "immobilie");
         ensurerState(immo.berechneVerkehrswert() > 50_000, "Zu billig");
         ensurerState(immobilien.size() < 51, "Portfolio voll");
         immobilien.add(immo);
+    }
+
+    public int anzimmobilien()
+    {
+        return immobilien.size();
     }
 
     public double calcGesamtwert()
@@ -51,8 +57,10 @@ public class Immobilienmakler
         return sum;
     }
 
-    public int countWidmung(char widmung)
+    public int countWidmung(char widmung) throws ImmobilienmaklerException
     {
+        ensurerState(toUpperCase(widmung) == 'B' || toUpperCase(widmung) == 'G' || toUpperCase(widmung) == 'N', "Ungueltige Widmung");
+
         int anz = 0;
         for (Immobilie i:immobilien)
         {
